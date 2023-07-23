@@ -29,9 +29,12 @@ public class TreePractice {
         temp.insertIntoBST(20);
         temp.insertIntoBST(40);
         temp.insertIntoBST(110);
-        temp.preorder(temp.root);
-        temp.deleteBinarySeachTreeNode(temp.root, 40);
+        temp.insertIntoBST(55);
+        temp.levelorder();
         System.out.println();
-        temp.preorder(temp.root);
+        temp.searchBinarySearchTree(temp.root, -10);
+        temp.deleteBinarySeachTreeNode(temp.root, 60);
+        System.out.println();
+        temp.levelorder();
     }
 }
