@@ -1,11 +1,9 @@
 package com.Tree.AVLTree;
 
 public class AVLNode {
-
     public Integer value;
-    AVLNode left;
-    AVLNode right;
-
+    public AVLNode left;
+    public AVLNode right;
     public Integer height;
 
     public AVLNode(Integer value) {
