@@ -39,10 +39,10 @@ public class TreePractice {
 //        temp.levelorder();
 
         AVLTree newAvl = new AVLTree();
-        newAvl.insertIntoAVLTree(5);
-        newAvl.insertIntoAVLTree(10);
-        newAvl.insertIntoAVLTree(15);
-        newAvl.insertIntoAVLTree(20);
-        newAvl.levelorder();
+        newAvl.insert(5);
+        newAvl.insert(10);
+        newAvl.insert(15);
+        newAvl.insert(20);
+        newAvl.levelOrder();
     }
 }

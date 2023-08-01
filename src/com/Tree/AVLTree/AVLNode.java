@@ -1,16 +1,18 @@
 package com.Tree.AVLTree;
 
 public class AVLNode {
-
     public Integer value;
-    AVLNode left;
-    AVLNode right;
     public Integer height;
+    public AVLNode left;
+    public AVLNode right;
 
-    public AVLNode(Integer value) {
+
+    AVLNode(Integer value) {
+        this.height = 0;
         this.value = value;
         this.left = null;
         this.right = null;
-        this.height = 0;
     }
+
+
 }
