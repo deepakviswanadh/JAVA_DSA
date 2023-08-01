@@ -38,11 +38,11 @@ public class TreePractice {
 //        System.out.println();
 //        temp.levelorder();
 
-        AVLTree newAvl = new AVLTree();
-        newAvl.insert(5);
-        newAvl.insert(10);
-        newAvl.insert(15);
-        newAvl.insert(20);
-        newAvl.levelOrder();
+        AVLTree temp = new AVLTree();
+        temp.insertIntoAVLTree(5);
+        temp.insertIntoAVLTree(10);
+        temp.insertIntoAVLTree(15);
+        temp.insertIntoAVLTree(20);
+        temp.levelorder();
     }
 }
