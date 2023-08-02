@@ -44,5 +44,8 @@ public class TreePractice {
         temp.insertIntoAVLTree(15);
         temp.insertIntoAVLTree(20);
         temp.levelorder();
+        System.out.println();
+        temp.deleteNode(15);
+        temp.levelorder();
     }
 }

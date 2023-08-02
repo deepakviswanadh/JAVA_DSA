@@ -96,4 +96,62 @@ public class AVLTree {
     public void insertIntoAVLTree(Integer value) {
         root = insertAVLNode(root, value);
     }
+
+    public AVLNode getPredecessor(AVLNode node) {
+        if (node.right == null) return node;
+        return getPredecessor(node.right);
+    }
+
+    private AVLNode deleteAVLNode(AVLNode node, Integer value) {
+        if (node == null) return null;
+            //traversal
+        else if (value < node.value) {
+            node.left = deleteAVLNode(node.left, value);
+        } else if (value > node.value) {
+            node.right = deleteAVLNode(node.right, value);
+        }
+        //deletion
+        else {
+            //node has 2 child
+            if (node.left != null && node.right != null) {
+                AVLNode preNode = getPredecessor(node.left);
+                node.value = preNode.value;
+                node.left = deleteAVLNode(node.left, preNode.value);
+                return node;
+            }
+            // node has 1 child
+            else if (node.right != null) return node.right;
+            else if (node.left != null) return node.left;
+                //leaf node
+            else {
+                return null;
+            }
+        }
+        //rebalancing
+        node.height = 1 + Math.max(getHeight(node.left), getHeight(node.right));
+        Integer balance = getBalance(node);
+        //LL
+        if (balance > 1 && getBalance(node.left) >= 0) {
+            return rotateRight(node);
+        }
+        //LR
+        if (balance > 1 && getBalance(node.left) < 0) {
+            node.left = rotateLeft(node.left);
+            return rotateRight(node);
+        }
+        //RL
+        if (balance < -1 && getBalance(node.left) > 0) {
+            node.right = rotateRight(node.right);
+            return rotateLeft(node);
+        }
+        //RR
+        if (balance < -1 && getBalance(node.left) <= 0) {
+            return rotateLeft(node);
+        }
+        return node;
+    }
+
+    public void deleteNode(Integer value) {
+        root = deleteAVLNode(root, value);
+    }
 }
