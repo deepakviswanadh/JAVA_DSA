@@ -88,11 +88,9 @@ public class BinarySearchTree {
         }
     }
 
-    public BinarySearchTreeNode findSuccessor(BinarySearchTreeNode node) {
+    public BinarySearchTreeNode findPredecessor(BinarySearchTreeNode node) {
         if (node.right == null) return node;
-        else {
-            return findSuccessor(node.right);
-        }
+        return findPredecessor(node.right);
     }
 
 
@@ -111,7 +109,7 @@ public class BinarySearchTree {
 
         //case: both child exists
         if (root.right != null && root.left != null) {
-            BinarySearchTreeNode nodeSuccessor = findSuccessor(root.left);
+            BinarySearchTreeNode nodeSuccessor = findPredecessor(root.left);
             root.value = nodeSuccessor.value;
             root.left = deleteBinarySeachTreeNode(root.left, nodeSuccessor.value);
             return root;
