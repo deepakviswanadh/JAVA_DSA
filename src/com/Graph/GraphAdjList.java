@@ -38,15 +38,16 @@ public class GraphAdjList {
     public void bfs() {
         Queue<GraphNodeAdjList> data = new LinkedList<>();
         data.add(list.get(0));
-        list.get(0).setVisited(true);
         if (!data.isEmpty()) {
             GraphNodeAdjList removed = data.remove();
-            System.out.println(removed.value + " ");
+            if (!removed.isVisited) {
+                System.out.println(removed.value + " ");
+                removed.isVisited = true;
+            }
             if (removed.neighbours.size() != 0) {
                 for (GraphNodeAdjList ind : removed.neighbours) {
                     if (!ind.isVisited()) {
                         data.add(ind);
-                        ind.setVisited(true);
                     }
                 }
             }
@@ -84,5 +85,33 @@ public class GraphAdjList {
         }
     }
 
+    //single source shortest path problem
+
+    //using dfs
+
+    public void printParentPath(GraphNodeAdjList node) {
+        if (node.parent != null) {
+            printParentPath(node.parent);
+        }
+        System.out.println(node.value + " ");
+    }
+
+    public void BFSFSSSPP() {
+        Queue<GraphNodeAdjList> queue = new LinkedList<>();
+        queue.add(list.get(0));
+        while (!queue.isEmpty()) {
+            GraphNodeAdjList removed = queue.poll();
+            printParentPath(removed);
+            if (!removed.isVisited) {
+                removed.isVisited = true;
+            }
+            for (GraphNodeAdjList neighbour : removed.neighbours) {
+                if (!neighbour.isVisited) {
+                    queue.add(neighbour);
+                    neighbour.parent = removed;
+                }
+            }
+        }
+    }
 
 }

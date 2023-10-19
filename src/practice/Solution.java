@@ -1,46 +1,40 @@
 package practice;
 
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 class Solution {
-    public void solve(char[][] board) {
-        //capture unsurrounded O to T
-        //capture surrounded O to X
-        //uncapture surrounded T to O
-
-        capture1(board);
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j] == 'O')
-                    board[i][j] = 'X';
-            }
+    public static boolean checkInclusion(String s1, String s2) {
+        int k = s1.length();
+        String res = "";
+        for (int i = 0; i < k; i++) {
+            res += s2.charAt(i);
         }
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j] == 'T')
-                    board[i][j] = 'O';
-            }
+        res = Stream.of(res.split(""))
+                .sorted()
+                .collect(Collectors.joining());
+        s1 = Stream.of(s1.split(""))
+                .sorted()
+                .collect(Collectors.joining());
+        if (s1.equals(res)) return true;
+        for (int i = k; i < s2.length(); i++) {
+            res = res + s2.charAt(i);
+            res = res.substring(1);
+            String temp = "";
+            temp = Stream.of(res.split(""))
+                    .sorted()
+                    .collect(Collectors.joining());
+            System.out.println(temp);
+            System.out.println(s1);
+            if (temp.equals(s1))
+                return true;
+            temp = "";
         }
+        return false;
     }
 
-    public void capture1(char[][] board) {
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; i++) {
-                if (board[i][j] == 'O' && (i == 0 || i == board.length - 1) || (
-                        j == 0 || j == board[0].length - 1
-                )) {
-                    transfer(i, j, board);
-                }
-            }
-        }
+    public static void main(String[] args) {
+        System.out.println(checkInclusion("adc", "dcba"));
     }
 
-    public void transfer(int i, int j, char[][] board) {
-        if (i > board.length - 1 || i < 0 || j < 0 || j > board[0].length || board[i][j] != 'O') {
-            return;
-        }
-        board[i][j] = 'T';
-        transfer(i - 1, j, board);
-        transfer(i + 1, j, board);
-        transfer(i, j - 1, board);
-        transfer(i, j + 1, board);
-    }
 }

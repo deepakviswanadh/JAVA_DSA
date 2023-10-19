@@ -8,6 +8,8 @@ public class GraphNodeAdjList {
     public int index;
     public List<GraphNodeAdjList> neighbours = new ArrayList<>();
 
+    public GraphNodeAdjList parent;
+
     public boolean isVisited = false;
 
     public boolean isVisited() {
