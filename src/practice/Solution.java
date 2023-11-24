@@ -1,40 +1,28 @@
 package practice;
 
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+class TreeNode {
+      int val;
+      TreeNode left;
+      TreeNode right;
+      TreeNode(int x) { val = x; }
+  }
+
 
 class Solution {
-    public static boolean checkInclusion(String s1, String s2) {
-        int k = s1.length();
-        String res = "";
-        for (int i = 0; i < k; i++) {
-            res += s2.charAt(i);
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        //opposite sides
+        if(root==null || ( p.val<=root.val && q.val>=root.val ) || ( p.val>=root.val && q.val<=root.val)){
+            return root;
         }
-        res = Stream.of(res.split(""))
-                .sorted()
-                .collect(Collectors.joining());
-        s1 = Stream.of(s1.split(""))
-                .sorted()
-                .collect(Collectors.joining());
-        if (s1.equals(res)) return true;
-        for (int i = k; i < s2.length(); i++) {
-            res = res + s2.charAt(i);
-            res = res.substring(1);
-            String temp = "";
-            temp = Stream.of(res.split(""))
-                    .sorted()
-                    .collect(Collectors.joining());
-            System.out.println(temp);
-            System.out.println(s1);
-            if (temp.equals(s1))
-                return true;
-            temp = "";
+        if(p.val>root.val){
+            return lowestCommonAncestor( root.right,  p,  q);
         }
-        return false;
+        return lowestCommonAncestor( root.left,  p,  q);
+
+
     }
 
     public static void main(String[] args) {
-        System.out.println(checkInclusion("adc", "dcba"));
+        System.out.println();
     }
-
 }
