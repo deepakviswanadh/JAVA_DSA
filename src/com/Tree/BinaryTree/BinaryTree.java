@@ -48,6 +48,26 @@ public class BinaryTree {
         System.out.println("\n");
     }
 
+    public void levelOrderTraversal() {
+        Queue<BinaryNode> queue = new LinkedList<BinaryNode>();
+        queue.add(root);
+        int level = 0;
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            for (int i = 0; i < levelSize; i++) {
+                BinaryNode removed = queue.poll();
+                System.out.print(removed.value + " ");
+                if (removed.left != null) {
+                    queue.add(removed.left);
+                }
+                if (removed.right != null) {
+                    queue.add(removed.right);
+                }
+            }
+            level++;
+        }
+    }
+
     //insert into binary tree
     public void insert(String value) {
         Queue<BinaryNode> temp = new LinkedList<BinaryNode>();

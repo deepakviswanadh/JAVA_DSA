@@ -15,11 +15,11 @@ public class TreeNode {
         this.children.add(childNode);
     }
 
-    public  String printTree(int level){
-        String constructData = "  ".repeat(level)+TreeData+"\n";
-        for(TreeNode treeNode: children){
-            constructData+=treeNode.printTree(level+1);
-        }
-        return constructData;
-    }
+//    public  String printTree(int level){
+//        String constructData = "  ".repeat(level)+TreeData+"\n";
+//        for(TreeNode treeNode: children){
+//            constructData+=treeNode.printTree(level+1);
+//        }
+//        return constructData;
+//    }
 }
