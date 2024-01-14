@@ -1,4 +1,4 @@
-package com.Tree.TreeNode;
+package src.com.Tree.TreeNode;
 
 import java.util.ArrayList;
 

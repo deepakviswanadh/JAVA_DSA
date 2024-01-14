@@ -1,6 +1,5 @@
-package examples;
+package src.examples;
 
-import com.sun.tools.javac.util.Convert;
 
 import java.util.ArrayList;
 import java.util.Arrays;

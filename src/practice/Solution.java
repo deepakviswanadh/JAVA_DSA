@@ -1,19 +1,20 @@
-package practice;
+package src.practice;
+
+import src.com.Tree.TreeNode.TreeNode;
 
 class Solution {
-<<<<<<< Updated upstream
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         //opposite sides
-        if(root==null || ( p.val<=root.val && q.val>=root.val ) || ( p.val>=root.val && q.val<=root.val)){
+        if (root == null || (p.val <= root.val && q.val >= root.val) || (p.val >= root.val && q.val <= root.val)) {
             return root;
         }
-        if(p.val>root.val){
-            return lowestCommonAncestor( root.right,  p,  q);
+        if (p.val > root.val) {
+            return lowestCommonAncestor(root.right, p, q);
         }
-        return lowestCommonAncestor( root.left,  p,  q);
+        return lowestCommonAncestor(root.left, p, q);
+    }
 
 
-=======
     public static int lengthOfLongestSubstring(String s) {
        //S = "aaaabbaa"
         StringBuilder temp = new StringBuilder();
@@ -34,7 +35,6 @@ class Solution {
             r++;
         }
         return max;
->>>>>>> Stashed changes
     }
 
     public static void main(String[] args) {
