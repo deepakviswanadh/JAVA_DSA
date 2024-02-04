@@ -1,4 +1,4 @@
-package com.Tree.BinaryTree;
+package src.com.Tree.BinaryTree;
 
 public class BinaryNode {
     String value;

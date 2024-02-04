@@ -1,4 +1,4 @@
-package com.Graph.WeightedGraph;
+package src.com.Graph.WeightedGraph;
 
 import java.util.List;
 import java.util.PriorityQueue;

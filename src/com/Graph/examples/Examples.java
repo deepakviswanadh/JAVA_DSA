@@ -11,8 +11,5 @@ public class Examples {
             adjList.computeIfAbsent(edge[0], k -> new ArrayList<>()).add(edge[1]);
             adjList.computeIfAbsent(edge[1], k -> new ArrayList<>()).add(edge[0]);
         }
-
-
-
     }
 }
