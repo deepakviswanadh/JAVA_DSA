@@ -1,4 +1,4 @@
-package com.Graph;
+package src.com.Graph;
 
 public class GraphNode {
     String nodeValue;

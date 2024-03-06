@@ -1,6 +1,7 @@
-package com.Graph;
+package src.com.Graph;
 
 import java.util.*;
+import src.com.Graph.GraphNode;
 
 public class Graph {
     List<GraphNode> nodeList;

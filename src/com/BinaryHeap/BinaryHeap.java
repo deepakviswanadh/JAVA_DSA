@@ -5,6 +5,7 @@ public class BinaryHeap {
     int sizeOfTree;
 
     public BinaryHeap(int size) {
+        //this +1 size is needed as 0 index is left out for math simplicity
         arr = new int[size+1];
         this.sizeOfTree = 0;
     }

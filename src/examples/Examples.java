@@ -1,9 +1,7 @@
 package src.examples;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -66,5 +64,13 @@ public class Examples {
         int numberOfDisks = 3;
         towerOfHanoi(numberOfDisks, 'A', 'C', 'B');
     }
+
+        public int[] topKFrequent(int[] nums, int k) {
+            Map<Integer,Integer> data = new HashMap<>();
+            for(int i=0;i<nums.length;i++){
+                data.put(i, data.getOrDefault(i,0)+1);
+            }
+            Collections.sort(data, (e1, e2) -> e2.getValue().compareTo(e1.getValue()));
+        }
 }
 
