@@ -1,4 +1,4 @@
-package com.Tree.AVLTree;
+package src.com.Tree.AVLTree;
 
 public class AVLNode {
     public Integer value;

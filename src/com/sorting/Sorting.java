@@ -2,6 +2,8 @@ package src.com.sorting;
 
 import java.util.Arrays;
 
+//bubble sort,insertion,selection->O(N^2)
+//merge,heap sort->O(NlogN)
 public class Sorting {
     public static void bubbleSort(int[] arr) {
         int temp = 0;
@@ -100,5 +102,42 @@ public class Sorting {
         while(r< right.length){
             arr[k++]=right[r++];
         }
+    }
+
+
+    public void quickSort(int []arr, int start, int end){
+        if(start>=end) {
+            return;
+        }
+        int pivotIndex=findPivotIndex(arr,start, end);
+        //divide and conquer around pivot and not including it
+        quickSort(arr,start,pivotIndex-1);
+        quickSort(arr,pivotIndex+1,end);
+    }
+
+    public int findPivotIndex(int []arr,int start,int end){
+        int pElement= arr[start];
+        //skip comparing pivot element
+        int i=start+1;
+        int j=end;
+        while(i<j){
+            do{
+                i++;
+            }while(arr[i]<=pElement);
+            do{
+                j--;
+            }while(arr[j]>pElement);
+            swap(arr,i,j);
+        }
+        if(i<j) {
+            swap(arr, start, j);
+        }
+        return j;
+    }
+
+    public void swap(int[]arr,int i, int j){
+        int temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
     }
 }

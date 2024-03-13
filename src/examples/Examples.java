@@ -54,9 +54,11 @@ public class Examples {
 
     public static void towerOfHanoi(int n, char source, char destination, char auxiliary) {
         if (n == 1) {
+            System.out.println("Move disk 1 from " + source + " to " + destination);
             return;
         }
         towerOfHanoi(n - 1, source, auxiliary, destination);
+        System.out.println("Move disk " + n + " from " + source + " to " + destination);
         towerOfHanoi(n - 1, auxiliary, destination, source);
     }
 
@@ -65,12 +67,13 @@ public class Examples {
         towerOfHanoi(numberOfDisks, 'A', 'C', 'B');
     }
 
-        public int[] topKFrequent(int[] nums, int k) {
-            Map<Integer,Integer> data = new HashMap<>();
-            for(int i=0;i<nums.length;i++){
-                data.put(i, data.getOrDefault(i,0)+1);
-            }
-            Collections.sort(data, (e1, e2) -> e2.getValue().compareTo(e1.getValue()));
-        }
+
+//    public int[] topKFrequent(int[] nums, int k) {
+//        Map<Integer, Integer> data = new HashMap<>();
+//        for (int i = 0; i < nums.length; i++) {
+//            data.put(i, data.getOrDefault(i, 0) + 1);
+//        }
+//        Collections.sort(data, (e1, e2) -> e2.getValue().compareTo(e1.getValue()));
+//    }
 }
 
