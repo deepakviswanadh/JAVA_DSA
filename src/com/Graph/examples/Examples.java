@@ -35,5 +35,29 @@ public class Examples {
         return count;
     }
 
-
+    //detect cycle in a undireted graph
+    public boolean detectCycle (GraphNodeAdjList root){
+        Queue<GraphNodeAdjList>queue= new LinkedList<>();
+        queue.add(root);
+        int count=0;
+        //bfs
+        while(!queue.isEmpty()){
+            GraphNodeAdjList removed = queue.poll();
+            if(!removed.isVisited){
+                removed.isVisited=true;
+            }
+            else if(removed.isVisited){
+                return true;
+            }
+            for(GraphNodeAdjList nei:removed.neighbours){
+                if(!nei.isVisited){
+                    queue.add(nei);
+                }
+                else if(nei.isVisited && nei!=removed){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

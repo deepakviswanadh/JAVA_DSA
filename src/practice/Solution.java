@@ -1,26 +1,23 @@
 package src.practice;
 
 
+import src.com.Graph.GraphNodeAdjList;
+
 import java.util.LinkedList;
 import java.util.*;
 
-class GraphNode{
-    int val;
-    boolean isVisited=false;
-    List<GraphNode> neighbours;
-}
 class Solution {
-    public int CountComponents(GraphNode root) {
-        Queue<GraphNode>queue= new LinkedList<>();
+    public int CountComponents(GraphNodeAdjList root) {
+        Queue<GraphNodeAdjList>queue= new LinkedList<>();
         queue.add(root);
         int count=0;
         //bfs
         while(!queue.isEmpty()){
-            GraphNode removed = queue.poll();
+            GraphNodeAdjList removed = queue.poll();
             if(!removed.isVisited){
                 removed.isVisited=true;
             }
-            for(GraphNode nei:removed.neighbours){
+            for(GraphNodeAdjList nei:removed.neighbours){
                 if(!nei.isVisited){
                     queue.add(nei);
                 }

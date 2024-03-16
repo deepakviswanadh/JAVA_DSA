@@ -20,7 +20,7 @@ class GrpahsLeetcode {
 
         for (int i = 0; i < n; i++) {
             if (!visited[i]) {
-                dfsIterative(i, adjList, visited);
+                dfs(i, adjList, visited);
                 count++;
             }
         }
@@ -28,7 +28,7 @@ class GrpahsLeetcode {
         return count;
     }
 
-    private void dfsIterative(int start, Map<Integer, List<Integer>> adjList, boolean[] visited) {
+    private void dfs(int start, Map<Integer, List<Integer>> adjList, boolean[] visited) {
         Stack<Integer> stack = new Stack<>();
         stack.push(start);
 
