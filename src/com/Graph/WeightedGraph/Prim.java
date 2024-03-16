@@ -1,8 +1,6 @@
 package src.com.Graph.WeightedGraph;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class Prim {
     public static List<WeightedGraphNode> primMinimumSpanningTree(WeightedGraph graph) {

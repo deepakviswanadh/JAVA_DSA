@@ -1,21 +1,32 @@
 package src.practice;
 
+
+import java.util.LinkedList;
+import java.util.*;
+
+class GraphNode{
+    int val;
+    boolean isVisited=false;
+    List<GraphNode> neighbours;
+}
 class Solution {
-    public String longestPalindrome(String s) {
-        int lp=0;
-        int rp=1;
-        String sub="";
-        sub+=s.charAt(lp);
-        while(rp<s.length()){
-            sub+=s.charAt(rp);
-            if(isPalindrome){
-                rp++;
+    public int CountComponents(GraphNode root) {
+        Queue<GraphNode>queue= new LinkedList<>();
+        queue.add(root);
+        int count=0;
+        //bfs
+        while(!queue.isEmpty()){
+            GraphNode removed = queue.poll();
+            if(!removed.isVisited){
+                removed.isVisited=true;
             }
-            else{
-                sub=sub.substring(lp+1);
-                lp++;
+            for(GraphNode nei:removed.neighbours){
+                if(!nei.isVisited){
+                    queue.add(nei);
+                }
             }
+            count++;
         }
-        return sub;
+        return count;
     }
 }
