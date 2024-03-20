@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Kruskal {
 
-    public List<WeightedGraphNode> kruskalMST(WeightedGraph graph) {
+    public List<WeightedGraphNode> kruskalMST(Dijkstra graph) {
         List<WeightedGraphNode> result = new ArrayList<>();
         List<Edge> edges = new ArrayList<>();
 

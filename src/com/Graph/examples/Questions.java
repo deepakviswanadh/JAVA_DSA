@@ -44,15 +44,16 @@ public class Questions {
         return count;
     }
 
+
     //detect cycle in an undirected graph
     public boolean detectCycle(Map<Integer, List<Integer>> adjList) {
         Queue<Integer> queue = new LinkedList<>();
         queue.add(adjList.keySet().iterator().next());
-        Set<Integer>visited = new HashSet<>();
+        Set<Integer> visited = new HashSet<>();
         //bfs
         while (!queue.isEmpty()) {
             Integer removed = queue.poll();
-            if (visited.contains(removed)){
+            if (visited.contains(removed)) {
                 return true;
             }
             visited.add(removed);
@@ -66,6 +67,7 @@ public class Questions {
         }
         return false;
     }
+
 
     //detect cycle in a directed graph
     public boolean hasCycle(Map<Integer, List<Integer>> adjList) {
@@ -120,5 +122,27 @@ public class Questions {
             }
         }
         return -1;
+    }
+
+
+    //topological sort for directed acyclic graph
+
+    public void topoInner(Integer ind, Map<Integer, List<Integer>> adjList, Set<Integer>visited, List<Integer> indList, Stack<Integer>stack){
+        for(Integer each:indList){
+            if(!visited.contains(each)){
+                topoInner(each, adjList,visited,adjList.get(each),stack);
+            }
+            visited.add(ind);
+            stack.push(ind);
+        }
+    }
+    public void topoSort(Map<Integer, List<Integer>> adjList){
+        Set<Integer>visited= new HashSet<>();
+        Stack<Integer>stack = new Stack<>();
+        for(Map.Entry<Integer,List<Integer>>each:adjList.entrySet()){
+            if(!visited.contains(each.getKey())){
+                topoInner(each.getKey(),adjList,visited,each.getValue(),stack);
+            }
+        }
     }
 }

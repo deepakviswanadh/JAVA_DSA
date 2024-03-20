@@ -3,7 +3,7 @@ package src.com.Graph.WeightedGraph;
 import java.util.*;
 
 public class Prim {
-    public static List<WeightedGraphNode> primMinimumSpanningTree(WeightedGraph graph) {
+    public static List<WeightedGraphNode> primMinimumSpanningTree(Dijkstra graph) {
         List<WeightedGraphNode> minimumSpanningTree = new ArrayList<>();
         List<WeightedGraphNode> nodeList = graph.nodeList;
         WeightedGraphNode startNode = nodeList.get(0); // Start from the first node
