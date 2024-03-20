@@ -1,4 +1,4 @@
-package com.Graph.WeightedGraph;
+package src.com.Graph.WeightedGraph;
 
 import java.util.HashMap;
 import java.util.List;

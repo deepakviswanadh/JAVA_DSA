@@ -1,4 +1,4 @@
-package com.Tree.BinarySeachTree;
+package src.com.Tree.BinarySeachTree;
 
 public class BinarySearchTreeNode {
     public Integer value;

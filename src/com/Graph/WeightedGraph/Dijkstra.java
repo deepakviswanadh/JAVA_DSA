@@ -1,12 +1,12 @@
-package com.Graph.WeightedGraph;
+package src.com.Graph.WeightedGraph;
 
 import java.util.List;
 import java.util.PriorityQueue;
 
-public class WeightedGraph {
+public class Dijkstra {
     public List<WeightedGraphNode> nodeList;
 
-    public WeightedGraph(List<WeightedGraphNode> nodeList) {
+    public Dijkstra(List<WeightedGraphNode> nodeList) {
         this.nodeList = nodeList;
     }
 
