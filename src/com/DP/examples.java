@@ -14,8 +14,15 @@ public class examples {
         return t1;
     }
 
-    //no of factors of n using some numbers
+    // no of factors of n using some numbers
     // say no of factors of 5 using 1 3 4
+    // there are 6 ways
+    // 1+ 1 + 1 + 1 + 1 = 5
+    // 1 + 1 + 3 = 5
+    // 1 + 3 + 1 = 5
+    // 3 + 1 + 1 = 5
+    // 1 + 4 = 5
+    // 4 + 1 = 5
     public static int sumOfFactors(int[] arr, int n, int n1, int n2, int n3) {
         if (n <= 2) return 1;
         if (arr[n] != 0) return arr[n];
