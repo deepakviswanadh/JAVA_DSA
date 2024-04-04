@@ -1,4 +1,4 @@
-package src.com.DesignPatterns.DependencyInjection;
+package src.com.springboot.DependencyInjection;
 
 public class MessageProcessorField {
 
