@@ -1,4 +1,4 @@
-package src.com.Graph.coloring;
+package src.com.Graph.WeightedGraph.coloring;
 
 import java.util.*;
 

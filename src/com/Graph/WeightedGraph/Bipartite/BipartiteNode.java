@@ -1,4 +1,4 @@
-package src.com.Graph.Bipartite;
+package src.com.Graph.WeightedGraph.Bipartite;
 
 import java.util.LinkedList;
 import java.util.List;

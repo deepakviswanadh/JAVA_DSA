@@ -1,9 +1,8 @@
-package src.com.Graph.Bipartite;
+package src.com.Graph.WeightedGraph.Bipartite;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.Stack;
 
 public class Bipartite {
 
@@ -27,7 +26,7 @@ public class Bipartite {
                     queue.add(node);
                     node.setColor(1 - removed.getColor());
                 }
-                //if visited, verify the color from its parent/neighbour
+                //if visited, verify the color from the current node
                 //if they match, its an odd degree cycle
                 else {
                     if (removed.getColor() == node.getColor()) {
@@ -41,14 +40,16 @@ public class Bipartite {
 
 
     //maximum matching (maximum flow)
-    public int FordFulkerson() {
+    //variant of Ford Fulkerson
+    public int FordFulkersonVariant() {
         int matching = 0;
         for (BipartiteNode node : nodeList) {
             node.setVisited(false);
         }
-        //we are performing dfs on the flow network
-        //for only unvisited/unmatched nodes
-        //if a node is matched, we are not adding it to stack
+        //we are performing bfs on the flow network
+        //for unvisited & unmatched nodes, we match them and not add to stack
+        //as they are neighbours of nodes that are both matched and visited
+        //if a node is matched and not visited, we are adding it's matching to stack
         Queue<BipartiteNode> queue = new LinkedList<>();
         queue.offer(nodeList.get(0));
         while (!queue.isEmpty()) {
@@ -61,10 +62,13 @@ public class Bipartite {
                             currentNode.setMatchedNode(neighbor);
                             neighbor.setMatchedNode(currentNode);
                             matching++;
+                            neighbor.visited=true;
                             break;
-                            //node is matched, no need to explore this
-                            //no need to add to dfs
+                            //node is matched and marked visited
+                            //no need to explore this
+                            //no need to add to bfs
                         } else {
+                            //matched and unvisited=>add to bfs
                             queue.offer(neighbor.getMatchedNode());
                         }
                     }
