@@ -105,39 +105,43 @@ public class Sorting {
     }
 
 
-    public void quickSort(int []arr, int start, int end){
-        if(start>=end) {
+    public static void quickSort(int []arr, int start, int end) {
+        if (start >= end) {
             return;
         }
-        int pivotIndex=findPivotIndex(arr,start, end);
-        //divide and conquer around pivot and not including it
-        quickSort(arr,start,pivotIndex-1);
-        quickSort(arr,pivotIndex+1,end);
+        int pivotIndex = findPivotIndex(arr, start, end);
+        quickSort(arr, start, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, end);
     }
 
-    public int findPivotIndex(int []arr,int start,int end){
-        int pElement= arr[start];
-        //skip comparing pivot element
-        int i=start+1;
-        int j=end;
-        while(i<j){
-            do{
+    public static int findPivotIndex(int []arr, int start, int end) {
+        int pivotElement = arr[start];
+        int i = start + 1;
+        int j = end;
+
+        while (i <= j) {
+            //move until point where arr[i] is greater than pivot
+            while (arr[i] <= pivotElement) {
                 i++;
-            }while(arr[i]<=pElement);
-            do{
+            }
+            //move until point where arr[j] is smaller than pivot
+            while (arr[j] > pivotElement) {
                 j--;
-            }while(arr[j]>pElement);
-            swap(arr,i,j);
+            }
+            //exchange i and j as long as i<j
+            if (i < j) {
+                swap(arr, i, j);
+            }
         }
-        if(i<j) {
-            swap(arr, start, j);
-        }
+        //j is the index of pivot as i crossed j
+        //move pivot to it
+        swap(arr, start, j);
         return j;
     }
 
-    public void swap(int[]arr,int i, int j){
-        int temp=arr[i];
-        arr[i]=arr[j];
-        arr[j]=temp;
+    public static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }

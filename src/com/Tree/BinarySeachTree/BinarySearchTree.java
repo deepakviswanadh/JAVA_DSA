@@ -100,37 +100,36 @@ public class BinarySearchTree {
         }
         if (value < root.value) {
             root.left = deleteBinarySeachTreeNode(root.left, value);
-            return root;
         } else if (value > root.value) {
             root.right = deleteBinarySeachTreeNode(root.right, value);
-            return root;
-        }
-
-        //case: both child exists
-        if (root.right != null && root.left != null) {
-            BinarySearchTreeNode nodeSuccessor = findPredecessor(root.left);
-            root.value = nodeSuccessor.value;
-            root.left = deleteBinarySeachTreeNode(root.left, nodeSuccessor.value);
-            return root;
-        }
-        // case: it has one child
-        // left child
-        else if (root.left != null) {
-            return root.left;
+        } else {
+            //case: both child exists
+            if (root.right != null && root.left != null) {
+                BinarySearchTreeNode nodeSuccessor = findPredecessor(root.left);
+                root.value = nodeSuccessor.value;
+                root.left = deleteBinarySeachTreeNode(root.left, nodeSuccessor.value);
+                return root;
+            }
+            // case: it has one child
+            // left child
+            else if (root.left != null) {
+                return root.left;
 //            root.value = root.left.value;
 //            root.left = null;
 //            return root;
-        }
-        //right child
-        else if (root.right != null) {
-            return root.right;
+            }
+            //right child
+            else if (root.right != null) {
+                return root.right;
 //            root.value = root.right.value;
 //            root.right = null;
 //            return root;
+            }
+            //no child
+            else {
+                return null;
+            }
         }
-        //no child
-        else {
-            return null;
-        }
+        return root;
     }
 }

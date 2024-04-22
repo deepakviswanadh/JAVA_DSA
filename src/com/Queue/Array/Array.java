@@ -19,6 +19,8 @@ public class Array {
         if (isFull()) {
             throw new IllegalStateException("Queue is full");
         }
+        //% ensures that if rear reaches the end of the array
+        // it wraps around to the beginning of the array
         rear = (rear + 1) % capacity;
         array[rear] = data;
         size++;
@@ -28,6 +30,8 @@ public class Array {
         if (isEmpty()) {
             throw new IllegalStateException("Queue is empty");
         }
+        //% ensures that if front reaches the end of the array
+        // it wraps around to the beginning of the array
         int data = array[front];
         front = (front + 1) % capacity;
         size--;

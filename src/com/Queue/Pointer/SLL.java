@@ -14,11 +14,10 @@ public class SLL {
         Node newNode = new Node(data);
         if (isEmpty()) {
             front = newNode;
-            rear = newNode;
         } else {
             rear.next = newNode;
-            rear = newNode;
         }
+        rear = newNode;
     }
 
     public int dequeue() {

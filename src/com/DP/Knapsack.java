@@ -10,8 +10,8 @@ public class Knapsack {
                 //1st row and column=0
                 if (i == 0 || j == 0) {
                     arr[i][j] = 0;
-                    //if current weight is less than target, consider max of previous [row-1][column]
-                    //and [row-1][column]
+                    //if current weight is less than target,
+                    //consider max of previous [row][column-1] and [row-1][column]
                     //basically max of top and left values
                 } else if (weights[i - 1] <= j) {
                     arr[i][j] = Math.max(arr[i - 1][j], prices[i - 1] + arr[i - 1][j - weights[i - 1]]);

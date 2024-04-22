@@ -1,15 +1,5 @@
 package src.com.Queue.Pointer;
 
-class Node {
-    int data;
-    Node next;
-
-    public Node(int data) {
-        this.data = data;
-        this.next = null;
-    }
-}
-
 public class CLL {
     private Node front;
     private Node rear;
@@ -18,18 +8,20 @@ public class CLL {
         this.front = null;
         this.rear = null;
     }
-
     public void enqueue(int data) {
         Node newNode = new Node(data);
         if (isEmpty()) {
             front = newNode;
-            rear = newNode;
-            rear.next = front;
         } else {
+            //rear has ref of current last node
+            //rear.next makes current last node point to new node
+            //which will make new node as the new last node
             rear.next = newNode;
-            rear = newNode;
-            rear.next = front;
         }
+        //make rear point to new last node
+        //make new last node's next point to front,completing the circle
+        rear = newNode;
+        rear.next = front;
     }
 
     public int dequeue() {
@@ -50,5 +42,4 @@ public class CLL {
     public boolean isEmpty() {
         return front == null;
     }
-
 }

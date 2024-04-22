@@ -14,13 +14,10 @@ public class BellmanFord {
         source.distance = 0;
         int n = nodeList.size();
         int srcIdx = nodeList.indexOf(source);
-        relaxation(source);
         //run relaxation n-2 times since source is covered and we do it n-1 times
         for (int i = 0; i < n - 1; i++) {
-            if (i != srcIdx) {
                 WeightedGraphNode src = nodeList.get(i);
                 relaxation(src);
-            }
         }
         //check for negative cycle
         for (WeightedGraphNode each : nodeList) {

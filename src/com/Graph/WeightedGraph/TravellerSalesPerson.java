@@ -28,7 +28,9 @@ public class TravellerSalesPerson {
             //we are returning edge value of last city to 1st one
             return graph[pos][0];
 
-        //if already calculated,return
+        //The value of dp[mask][pos] is the minimum cost of visiting all cities
+        //represented by the mask and ending at city pos.
+
         if (dp[mask][pos] != -1)
             return dp[mask][pos];
 
@@ -41,8 +43,9 @@ public class TravellerSalesPerson {
             if ((mask & (1 << city)) == 0) {
                 //since now that city is visited, update the mask by making that city's
                 //index as 1 by using mask | (1 << city)
-                //here graphs[pos][city] is the distance from
-                //starting city to the current city
+
+                //here graph[pos][city] is the distance from
+                // starting(pos) city to the current city (city)
                 int newCost = graph[pos][city] + tsp(mask | (1 << city), city);
                 minCost = Math.min(minCost, newCost);
             }
@@ -60,8 +63,7 @@ public class TravellerSalesPerson {
                 {20, 25, 30, 0}
         };
 
-        //meaning of 1<<N => initialize N+1 elements with N+1th element as 1
-        //1000...N(0's)
+        //1<<N meaning 2^N. so all combinations of N cities will be considered
         dp = new int[1 << n][n];
         for (int[] row : dp)
             Arrays.fill(row, -1);
