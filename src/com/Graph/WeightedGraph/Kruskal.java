@@ -8,19 +8,17 @@ public class Kruskal {
         List<WeightedGraphNode> result = new ArrayList<>();
         List<Edge> edges = new ArrayList<>();
 
-        // Step 1: Create a list of all edges in the graph
         for (WeightedGraphNode node : graph.nodeList) {
             for (Map.Entry<WeightedGraphNode, Integer> entry : node.weightMap.entrySet()) {
                 edges.add(new Edge(node, entry.getKey(), entry.getValue()));
             }
         }
 
-        // Step 2: Sort all edges in ascending order based on their weights
-        edges.sort(Comparator.comparingInt(edge -> edge.weight));
+        // Step 2: Sort all edges in ascending order
+        edges.sort((a,b)->a.weight-b.weight);
 
         UnionFind unionFind = new UnionFind(graph.nodeList.size());
 
-        // Step 3: Iterate through sorted edges and add them to the MST if they don't create a cycle
         for (Edge edge : edges) {
             WeightedGraphNode source = edge.source;
             WeightedGraphNode destination = edge.destination;

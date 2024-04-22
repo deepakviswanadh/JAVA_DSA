@@ -140,12 +140,12 @@ public class AVLTree {
             return rotateRight(node);
         }
         //RL
-        if (balance < -1 && getBalance(node.left) > 0) {
+        if (balance < -1 && getBalance(node.right) > 0) {
             node.right = rotateRight(node.right);
             return rotateLeft(node);
         }
         //RR
-        if (balance < -1 && getBalance(node.left) <= 0) {
+        if (balance < -1 && getBalance(node.right) <= 0) {
             return rotateLeft(node);
         }
         return node;

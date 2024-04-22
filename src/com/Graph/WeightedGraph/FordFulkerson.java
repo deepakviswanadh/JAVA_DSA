@@ -6,47 +6,75 @@ public class FordFulkerson {
     private static final int vertices = 7;
 
     // Returns the maximum flow from source to sink in the given graph
-    public int fordFulkerson(int[][] graph, int source, int sink) {
+    //along with max distinct matching of set U
 
-        // the residual graph represents the remaining capacity
-        // of edges after the initial flow has been established.
-        int[][] residualGraph = new int[vertices][vertices];
-        for (int i = 0; i < vertices; ++i)
-            for (int j = 0; j <vertices; ++j)
-                residualGraph[i][j] = graph[i][j];
+    public int countDistinctMatchedVertices(int[][] graph, int sizeU, int sizeV) {
+        int totalVertices = sizeU + sizeV + 2;
+        int source = 0, sink = totalVertices - 1;
+        int[][] residualGraph = new int[totalVertices][totalVertices];
+        int maxFlow=0;
 
-        int[] parent = new int[vertices];
+        //source->sizeU
+        //sizeU+sizeV->sink
 
-        int maxFlow = 0;
+        // Connect source to all vertices in U
+        for (int u = 1; u <= sizeU; u++) {
+            residualGraph[source][u] = 1;
+        }
 
-        // Augment the flow while there is path from source to sink
+        // Connect all vertices in U to V based on the original graph
+        for (int u = 1; u <= sizeU; u++) {
+            for (int v = 1; v <= sizeV; v++) {
+                if (graph[u - 1][v - 1] == 1) {
+                    residualGraph[u][sizeU + v] = 1;
+                }
+            }
+        }
+
+        // Connect all vertices in V to the sink
+        for (int v = 1; v <= sizeV; v++) {
+            residualGraph[sizeU + v][sink] = 1;
+        }
+
+        int[] parent = new int[totalVertices];
+        boolean[] matchedU = new boolean[sizeU + 1];
+        boolean[] matchedV = new boolean[sizeV + 1];
+
         while (bfs(residualGraph, source, sink, parent)) {
-            // Find minimum residual capacity of the edges along the path filled by BFS.
             int pathFlow = Integer.MAX_VALUE;
-
-            // Finding the Minimum Residual Capacity along the Path
             int v = sink;
             while (v != source) {
                 int u = parent[v];
                 pathFlow = Math.min(pathFlow, residualGraph[u][v]);
                 v = u;
             }
-
-            // Updating Residual Capacities and Reverse Edges along the Path
             v = sink;
             while (v != source) {
                 int u = parent[v];
                 residualGraph[u][v] -= pathFlow;
                 residualGraph[v][u] += pathFlow;
+
+                // Track matched vertices in U and V
+                if (u != source && v != sink && u <= sizeU && v > sizeU && v <= sizeU + sizeV) {
+                    matchedU[u] = true;
+                    matchedV[v - sizeU] = true;
+                }
                 v = u;
             }
-
-            // Add path flow to overall flow
-            maxFlow += pathFlow;
+            maxFlow+=pathFlow;
         }
-
-        // Return the overall flow
-        return maxFlow;
+        int matchedVerticesCount = 0;
+        int i = 1;
+        while (i <= sizeU) {
+            if (matchedU[i]) matchedVerticesCount++;
+            i++;
+        }
+        i = 1;
+        while (i <= sizeV) {
+            if (matchedV[i]) matchedVerticesCount++;
+            i++;
+        }
+        return matchedVerticesCount;
     }
 
     // Returns true if there is a path from source 's' to sink 't' in residual graph.

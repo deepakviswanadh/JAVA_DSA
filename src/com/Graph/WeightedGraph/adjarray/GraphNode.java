@@ -1,4 +1,4 @@
-package src.com.Graph;
+package src.com.Graph.WeightedGraph.adjarray;
 
 public class GraphNode {
     String nodeValue;

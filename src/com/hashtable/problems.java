@@ -9,7 +9,7 @@ public class problems {
     //maximum length consecutive subarray
 
     public int MLCS(int []arr){
-        int size=0;
+        int size=Integer.MIN_VALUE;
         HashSet<Integer>set = new HashSet<>();
         set.addAll(Arrays.stream(arr).boxed().collect(Collectors.toList()));
         for(Integer i:set){
@@ -23,9 +23,7 @@ public class problems {
                 while(set.contains(temp)) {
                     temp++;
                 }
-                if(size<temp-i){
-                    size=temp-i;
-                }
+                size=Math.max(size,temp-i);
             }
         }
         return size;

@@ -3,7 +3,7 @@ package src.com.DP;
 import java.util.Arrays;
 
 public class Memoization {
-    //top-down recursion using memoization
+    //top-down memoization using recursion
     public static int fib(int n, int[] arr) {
         if (arr[n] != -1) {
             return arr[n];

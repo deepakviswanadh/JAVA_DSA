@@ -82,6 +82,30 @@ public class problems {
         return p.x >= 0 && p.x < maze.length && p.y >= 0 && p.y < maze[0].length;
     }
 
+    class Point {
+        int x, y;
+
+        Point(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (obj == null || getClass() != obj.getClass()) return false;
+            Point point = (Point) obj;
+            return x == point.x && y == point.y;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = x;
+            result = 31 * result + y;
+            return result;
+        }
+    }
+
     //infix to postfix
     public String infixToPostfix(String exp) {
         StringBuilder result = new StringBuilder();
@@ -127,30 +151,6 @@ public class problems {
                 return 3;
         }
         return -1;
-    }
-
-    class Point {
-        int x, y;
-
-        Point(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj) return true;
-            if (obj == null || getClass() != obj.getClass()) return false;
-            Point point = (Point) obj;
-            return x == point.x && y == point.y;
-        }
-
-        @Override
-        public int hashCode() {
-            int result = x;
-            result = 31 * result + y;
-            return result;
-        }
     }
 
     //convert number to binary
@@ -200,36 +200,29 @@ public class problems {
         }
     }
 
-}
-
-//min stack
-class MinStack {
-    private Stack<Integer> stack;
-    private Stack<Integer> minStack;
-    public MinStack() {
-        stack = new Stack<>();
-        minStack = new Stack<>();
-    }
-
-    public void push(int val) {
-        stack.push(val);
-        if (minStack.isEmpty() || val <= minStack.peek()) {
-            minStack.push(val);
+//smart difference
+    public  int findMaxDifference(Stack<Integer> stack) {
+        if (stack.isEmpty()) {
+            return 0; // or throw an exception depending on requirements
         }
-    }
 
-    public void pop() {
-        int val = stack.pop();
-        if (val == minStack.peek()) {
-            minStack.pop();
+        // Initialize the minimum element as the first element of the stack
+        int minElement = stack.peek();
+        int maxDifference = Integer.MIN_VALUE;
+
+        // Iterate through the stack elements
+        for (int num : stack) {
+            // Update maxDifference if the current num minus minElement is greater than current maxDifference
+            if (num - minElement > maxDifference) {
+                maxDifference = num - minElement;
+            }
+            // Update minElement if the current num is less than minElement
+            if (num < minElement) {
+                minElement = num;
+            }
         }
+
+        return maxDifference;
     }
 
-    public int top() {
-        return stack.peek();
-    }
-
-    public int getMin() {
-        return minStack.peek();
-    }
 }

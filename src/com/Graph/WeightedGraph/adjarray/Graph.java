@@ -1,7 +1,7 @@
-package src.com.Graph;
+package src.com.Graph.WeightedGraph.adjarray;
 
 import java.util.*;
-import src.com.Graph.GraphNode;
+import src.com.Graph.WeightedGraph.adjarray.GraphNode;
 
 public class Graph {
     List<GraphNode> nodeList;

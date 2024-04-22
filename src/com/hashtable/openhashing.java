@@ -24,12 +24,14 @@ public class openhashing {
     public void insert(String key) {
         int index = hash(key);
         LinkedList<Node> currentList = hashtable[index];
+        //override the value if already present
         for (Node each : currentList) {
             if (each.index == index) {
                 each.key = key;
                 return;
             }
         }
+        //else add to the LL
         currentList.add(new Node(index, key));
         size++;
     }
@@ -57,19 +59,5 @@ public class openhashing {
                 return;
             }
         }
-    }
-}
-
-
-class Node{
-    int index;
-    Node next;
-
-    String key;
-
-    Node(int index, String key){
-        this.index=index;
-        this.next=null;
-        this.key=key;
     }
 }

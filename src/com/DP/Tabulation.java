@@ -1,7 +1,7 @@
 package src.com.DP;
 
 public class Tabulation {
-    //bottom-up iteration using tabulation
+    //bottom-up tabulation using iteration
     public static int fib(int []arr,int n){
         arr[0]=0;
         arr[1]=1;

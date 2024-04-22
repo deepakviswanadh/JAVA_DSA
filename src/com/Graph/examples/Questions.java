@@ -1,7 +1,5 @@
 package src.com.Graph.examples;
 
-import src.com.Graph.GraphNodeAdjList;
-
 import java.util.*;
 
 public class Questions {

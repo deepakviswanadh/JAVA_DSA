@@ -14,7 +14,7 @@ public class LCS {
                 if(s1.charAt(i)==s2.charAt(j)){
                     arr[i][j]=1+arr[i+1][j+1];
                 }
-                //max of right, left
+                //max of right, bottom
                 else{
                     arr[i][j]=Math.max(arr[i][j+1],arr[i+1][j]);
                 }

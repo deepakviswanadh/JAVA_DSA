@@ -29,7 +29,7 @@ public class TravellerSalesPerson {
             return graph[pos][0];
 
         //The value of dp[mask][pos] is the minimum cost of visiting all cities
-        //represented by the mask and ending at city pos.
+        //ending at city pos.
 
         if (dp[mask][pos] != -1)
             return dp[mask][pos];
@@ -37,7 +37,6 @@ public class TravellerSalesPerson {
         int minCost = Integer.MAX_VALUE;
 
         for (int city = 0; city < n; city++) {
-            //not visited case
             //mask & (1 << city) will tell if that city in the mask is 0/1
             //0==unvisited
             if ((mask & (1 << city)) == 0) {

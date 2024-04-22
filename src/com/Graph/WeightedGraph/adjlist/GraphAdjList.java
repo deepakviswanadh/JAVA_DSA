@@ -1,4 +1,4 @@
-package src.com.Graph;
+package src.com.Graph.WeightedGraph.adjlist;
 
 import java.util.LinkedList;
 import java.util.List;

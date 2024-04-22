@@ -1,5 +1,8 @@
 package src.com.Graph;
 
+import src.com.Graph.WeightedGraph.adjarray.Graph;
+import src.com.Graph.WeightedGraph.adjarray.GraphNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
