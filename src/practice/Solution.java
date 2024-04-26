@@ -1,8 +1,5 @@
 package src.practice;
 
-import src.com.Graph.WeightedGraph.WeightedGraphNode;
-
-import javax.swing.*;
 import java.util.*;
 
 //prim ->similar to Dijsktra's
