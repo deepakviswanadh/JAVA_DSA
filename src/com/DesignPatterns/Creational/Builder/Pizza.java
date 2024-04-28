@@ -18,5 +18,4 @@ public class Pizza {
         return size;
     }
 
-
 }

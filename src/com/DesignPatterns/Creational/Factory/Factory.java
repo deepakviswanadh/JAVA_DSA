@@ -2,8 +2,6 @@ package src.com.DesignPatterns.Creational.Factory;
 
 //factory
 public class Factory {
-
-
     public OS createOS(String type){
         switch (type){
             case "Android":
